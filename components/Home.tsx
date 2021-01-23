@@ -172,9 +172,8 @@ const Home: React.FC<HomeProps> = ({ content }) => {
       </View>
       <View>
         <Text
-          style={
-            styles.dates
-          }>{`Pushya dates for ${Localization.timezone}`}</Text>
+          style={styles.dates}
+        >{`Pushya dates for ${Localization.timezone}`}</Text>
       </View>
       <ScrollView style={styles.scrollView}>
         {list.map((l, i) => (
@@ -193,7 +192,8 @@ const Home: React.FC<HomeProps> = ({ content }) => {
         <Overlay
           isVisible={visible}
           onBackdropPress={toggleOverlay}
-          overlayStyle={styles.introScrollView}>
+          overlayStyle={styles.introScrollView}
+        >
           <Intro
             onKnowMore={() => {
               DeviceStorage.setItem(DeviceStorage.FTU_STATE, "1");
@@ -206,7 +206,8 @@ const Home: React.FC<HomeProps> = ({ content }) => {
         {content && (
           <Overlay
             isVisible={notificationVisible}
-            overlayStyle={styles.introScrollView}>
+            overlayStyle={styles.introScrollView}
+          >
             <NotificationOverlay
               content={content}
               onClose={() => {

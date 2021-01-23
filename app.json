@@ -24,6 +24,7 @@
       "package": "com.bcarthic.hlpworld",
       "versionCode": 3,
       "useNextNotificationsApi": true,
+      "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/logo.png",
         "backgroundColor": "#FFFFFF"

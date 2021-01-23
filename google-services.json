@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "955442024241",
+    "project_id": "hlpworld-415b3",
+    "storage_bucket": "hlpworld-415b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:955442024241:android:fd4e7bd1f7b347d788aa10",
+        "android_client_info": {
+          "package_name": "com.bcarthic.hlpworld"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "955442024241-6s11p56l8uoncdssuk1e1mgk96ngnca0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBw9dfhlUSa6EaRXEyiMjo-7oO2fhYvs6U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "955442024241-6s11p56l8uoncdssuk1e1mgk96ngnca0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

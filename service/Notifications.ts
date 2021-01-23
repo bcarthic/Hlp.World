@@ -52,13 +52,21 @@ const postToken = async (token: string) => {
 };
 
 export const registerForPushNotifications = async () => {
+  let token: Notifications.ExpoPushToken | undefined;
   try {
     const permission = await Permissions.askAsync(Permissions.NOTIFICATIONS);
     if (!permission.granted) return;
-    let token = await Notifications.getExpoPushTokenAsync();
-    await postToken(token.data);
+    token = await Notifications.getExpoPushTokenAsync();
   } catch (error) {
     console.log("Error getting a token", error);
+  }
+
+  try {
+    if (token) {
+      await postToken(token.data);
+    }
+  } catch (error) {
+    console.log("Error posting a token", error);
   }
 };
 
