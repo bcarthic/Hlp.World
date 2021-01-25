@@ -134,7 +134,7 @@ const Home: React.FC<HomeProps> = ({ content }) => {
         containerStyle={styles.header}
         leftComponent={
           <Image
-            source={require("../assets/logo.png")}
+            source={require("../assets/logo192round.png")}
             style={{ width: 30, height: 30 }}
             onPress={() => {
               Linking.openURL("https://hlp.world");
