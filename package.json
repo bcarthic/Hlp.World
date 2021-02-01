@@ -8,6 +8,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@microsoft/applicationinsights-web": "^2.5.11",
     "@react-native-community/async-storage": "~1.12.0",
     "expo": "~40.0.0",
     "expo-device": "~2.4.0",

@@ -4,6 +4,7 @@ import { StyleSheet, View } from "react-native";
 import Home from "./components/Home";
 import { registerForPushNotifications } from "./service/Notifications";
 import * as Notifications from "expo-notifications";
+import { appInsights, logDebug } from "./service/AppInsight";
 
 const App = () => {
   const [content, setContent] = useState<
@@ -13,10 +14,12 @@ const App = () => {
 
   useEffect(() => {
     registerForPushNotifications();
+    appInsights.loadAppInsights();
+    appInsights.trackPageView();
 
     responseListener = Notifications.addNotificationResponseReceivedListener(
       (response: Notifications.NotificationResponse) => {
-        console.log("Setting content");
+        logDebug("Notification received");
         setContent(response.notification.request.content);
       },
     );

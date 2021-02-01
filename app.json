@@ -22,7 +22,7 @@
     "android": {
       "permissions": [],
       "package": "com.bcarthic.hlpworld",
-      "versionCode": 5,
+      "versionCode": 7,
       "useNextNotificationsApi": true,
       "googleServicesFile": "./google-services.json",
       "adaptiveIcon": {

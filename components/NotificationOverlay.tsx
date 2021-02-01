@@ -2,6 +2,7 @@ import React from "react";
 import { Linking, StyleSheet, Text } from "react-native";
 import { Button, Card } from "react-native-elements";
 import * as Notifications from "expo-notifications";
+import { logDebug } from "../service/AppInsight";
 
 interface NotificationOverlayProps {
   content: Notifications.NotificationContent;
@@ -31,13 +32,20 @@ const NotificationOverlay: React.FC<NotificationOverlayProps> = ({
   onClose,
 }) => {
   const data = getValue(content);
+  logDebug("Viewed notification", data);
   return (
     <Card containerStyle={styles.card}>
       <Card.Title>{content.title}</Card.Title>
       <Text style={styles.subtitle}>{content.body}</Text>
       {data && data.value && <Text style={styles.text}>{data.value}</Text>}
       {data && data.url && (
-        <Text style={styles.link} onPress={() => Linking.openURL(data.url)}>
+        <Text
+          style={styles.link}
+          onPress={() => {
+            logDebug("Clicking notification link", data);
+            Linking.openURL(data.url);
+          }}
+        >
           Click here to know more
         </Text>
       )}

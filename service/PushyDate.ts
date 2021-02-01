@@ -1,4 +1,5 @@
 import dates from "../dates.json";
+import { logDebug, logError } from "./AppInsight";
 import { DeviceStorage } from "./DeviceStorage";
 import { convertDateToUserTimezone, formatTime, isPastDate } from "./TimeZone";
 
@@ -43,28 +44,27 @@ const getDates = async (): Promise<PushyaDate[]> => {
 
     return await getDatesFromServer();
   } catch (error) {
-    console.error(error);
+    logError("Error getting and parsing date", error);
     return dates[2021];
   }
 };
 
 export const getEvents = async (): Promise<Events[]> => {
-  console.log("Getting events");
+  logDebug("Getting events");
   try {
     const response = await fetch("https://poosam.azurewebsites.net/api/Events");
     const result = await response.json();
     const events = JSON.parse(result) as Events[];
     return events;
   } catch (error) {
-    console.error(error);
+    logError("Error getting events", error);
     return [];
   }
 };
 
 export const getFilteredDates = async (): Promise<PushyaDate[]> => {
-  console.log("Getting filtered date");
+  logDebug("Getting filtered date");
   const dates = await getDates();
-  // console.log("Filtered date", dates);
   const list: PushyaDate[] = [];
   if (dates) {
     for (const value of dates) {

@@ -33,6 +33,7 @@ import CarouselViewer from "./CarouselViewer";
 import Intro from "./Intro";
 import * as Notifications from "expo-notifications";
 import NotificationOverlay from "./NotificationOverlay";
+import { logDebug } from "../service/AppInsight";
 
 export interface HomeProps {
   content: Notifications.NotificationContent | undefined;
@@ -137,12 +138,13 @@ const Home: React.FC<HomeProps> = ({ content }) => {
             source={require("../assets/logo192round.png")}
             style={{ width: 30, height: 30 }}
             onPress={() => {
+              logDebug("Clicking logo");
               Linking.openURL("https://hlp.world");
             }}
           />
         }
         centerComponent={{
-          text: `HLP.WORLD`,
+          text: `HLP WORLD`,
           style: {
             color: "#fff",
             fontSize: 16,

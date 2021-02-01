@@ -1,4 +1,5 @@
 import AsyncStorage from "@react-native-community/async-storage";
+import { logError } from "./AppInsight";
 
 export class DeviceStorage {
   public static readonly FTU_STATE = "FTU_STATE";
@@ -10,7 +11,7 @@ export class DeviceStorage {
     try {
       return await AsyncStorage.getItem(key);
     } catch (error) {
-      console.error("Error getting data from async storage", error);
+      logError("Error getting data from async storage", error);
       return "";
     }
   }
@@ -19,7 +20,7 @@ export class DeviceStorage {
     try {
       await AsyncStorage.setItem(key, data);
     } catch (error) {
-      console.error("Error storing data to async storage", error);
+      logError("Error storing data to async storage", error);
     }
   }
 
@@ -27,7 +28,7 @@ export class DeviceStorage {
     try {
       await AsyncStorage.removeItem(key);
     } catch (error) {
-      console.error("Error removing data from async storage", error);
+      logError("Error removing data from async storage", error);
     }
   }
 }

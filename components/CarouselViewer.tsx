@@ -2,6 +2,7 @@ import React from "react";
 import { Dimensions, Linking, StyleSheet, Text, View } from "react-native";
 import { Button, Card, Image } from "react-native-elements";
 import { SwiperFlatList } from "react-native-swiper-flatlist";
+import { logDebug } from "../service/AppInsight";
 import { Events } from "../service/PushyDate";
 
 interface CarouselViewerProps {
@@ -28,6 +29,7 @@ const CarouselViewer: React.FC<CarouselViewerProps> = ({ events }) => {
                 resizeMode: "contain",
               }}
               onPress={() => {
+                logDebug("Clicking banner", item);
                 Linking.openURL(item.ClickUrl);
               }}
             />

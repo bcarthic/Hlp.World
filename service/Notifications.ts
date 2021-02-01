@@ -2,6 +2,7 @@ import * as Notifications from "expo-notifications";
 import * as Permissions from "expo-permissions";
 import { DeviceStorage } from "./DeviceStorage";
 import * as DeviceInfo from "expo-device";
+import { logDebug, logError } from "./AppInsight";
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -45,9 +46,9 @@ const postToken = async (token: string) => {
   });
   try {
     await response.text();
-    console.log("Token stored", data);
+    logDebug("New token registered", { id, name });
   } catch (error) {
-    console.error(error);
+    logError("Error posting token", error);
   }
 };
 
@@ -58,7 +59,7 @@ export const registerForPushNotifications = async () => {
     if (!permission.granted) return;
     token = await Notifications.getExpoPushTokenAsync();
   } catch (error) {
-    console.log("Error getting a token", error);
+    logError("Error getting a token", error);
   }
 
   try {
@@ -66,7 +67,7 @@ export const registerForPushNotifications = async () => {
       await postToken(token.data);
     }
   } catch (error) {
-    console.log("Error posting a token", error);
+    logError("Error posting a token", error);
   }
 };
 
@@ -92,7 +93,7 @@ export const scheduleNotification = async (dateString: string) => {
       trigger: trigger1,
     });
   } catch (err) {
-    console.log(err);
+    logError("Error scheduling local notification", err);
   }
 };
 
